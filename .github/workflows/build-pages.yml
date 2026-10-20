@@ -60,12 +60,12 @@ jobs:
           node-version: '24'
           cache: ${{ steps.detect-package-manager.outputs.manager }}
           cache-dependency-path: web/${{ steps.detect-package-manager.outputs.lockfile }}
-      - uses: actions/configure-pages@v5
+      - uses: actions/configure-pages@v6
         with:
           # Automatically inject basePath in your Next.js configuration file and disable server side image optimization
           # You may remove this line if you want to manage the configuration yourself: https://nextjs.org/docs/api-reference/next/image#unoptimized
           static_site_generator: next
-      - uses: actions/cache@v4
+      - uses: actions/cache@v6
         with:
           path: |
             web/.next/cache
@@ -87,7 +87,7 @@ jobs:
           echo "Generate CNAME file"
           printf '%s\n' "$CNAME" > ../out/CNAME
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
+        uses: actions/upload-pages-artifact@v5
         with:
           path: ./out
 
